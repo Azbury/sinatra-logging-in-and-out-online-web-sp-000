@@ -21,6 +21,7 @@ class ApplicationController < Sinatra::Base
 
   get '/account' do
     if session.has_key?(:user_id)
+      @user = User.find_by(id: session[:user_id])
       erb :account
     else
       erb :error
