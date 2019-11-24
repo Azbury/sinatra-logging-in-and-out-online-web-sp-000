@@ -20,8 +20,11 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/account' do
+    if session.has_key?(:user_id)
       erb :account
-
+    else
+      erb :error
+    end
   end
 
   get '/logout' do
